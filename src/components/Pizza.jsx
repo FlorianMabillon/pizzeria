@@ -1,13 +1,19 @@
 import React, {useState} from 'react'
-import { Card, Button, Row, Col, Modal } from 'react-bootstrap';
+import { Card, Button, Row, Col, Modal, ModalTitle } from 'react-bootstrap';
 
 
 const Pizza = (props) => {
     const [taille, setTaille] = useState('small');
-    const [quantite, setQuantite] = useState(1); 
+    const [quantite, setQuantite] = useState(1);
+    const [show, setShow] = useState(false);
+    
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
   return (
+    <>
     <Card style={{width:"18rem"}}>
-        <Card.Img variant="top" src={props.lapizza.image} />
+        <Card.Img variant="top" onClick={handleShow} src={props.lapizza.image} />
         <Card.Body>
             <Card.Title>{props.lapizza.name}</Card.Title>
             <Card.Text>
@@ -42,6 +48,15 @@ const Pizza = (props) => {
             </Row>
         </Card.Body>
     </Card>
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header><h5>{props.lapizza.name}</h5></Modal.Header>
+        <Modal.Body>
+            <Card.Img src={props.lapizza.image}/>
+            <strong>Description</strong> <br/>
+            {props.lapizza.description}
+        </Modal.Body>
+    </Modal>
+    </>
   )
 }
 
