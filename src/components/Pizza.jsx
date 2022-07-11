@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Card, Button, Row, Col } from 'react-bootstrap';
+import { Card, Button, Row, Col, Modal } from 'react-bootstrap';
 
 
 const Pizza = (props) => {
@@ -37,7 +37,7 @@ const Pizza = (props) => {
                     Prix : {props.lapizza.prices[0][taille] * quantite} €
                 </Col>
                 <Col>
-                <Button className="bg-warning text-light">Add</Button>
+                <Button className="bg-warning text-light">Ajouter</Button>
                 </Col>
             </Row>
         </Card.Body>
